@@ -3,12 +3,13 @@ class GdriveOrganizer < Formula
 
   desc "AI-powered Google Drive organizer CLI (scan, classify, review, apply, rollback)"
   homepage "https://github.com/papa-channy/google-drive-manager"
-  url "https://files.pythonhosted.org/packages/16/8a/02ab6135f487e1c31503070d5aab3d0a4cdf9f2b02d965c75eff6cf26e83/gdrive_organizer-0.1.0b2.tar.gz"
-  sha256 "7bf8da6e3b8fd5ed79607784e2fd0b8a35a76aac63de013e9fec40ab4c0d0a3b"
+  url "https://files.pythonhosted.org/packages/b3/04/212138421b723c17fd6b3e4a9fc490cd21802a20a8c54e595cf2b0cee464/gdrive_organizer-0.1.0b3.tar.gz"
+  sha256 "7e65ff70d7c8e66110d06a9f19e7ed768660d855a123551c1deacd1a371d7573"
   license "Apache-2.0"
 
+  # cryptography (transitive, via google-auth) builds with maturin, which needs Rust
+  depends_on "rust" => :build
   depends_on "python@3.12"
-  depends_on "rust" => :build # cryptography (transitive, via google-auth) builds with maturin
 
   resource "annotated-doc" do
     url "https://files.pythonhosted.org/packages/57/ba/046ceea27344560984e26a590f90bc7f4a75b06701f653222458922b558c/annotated_doc-0.0.4.tar.gz"
@@ -300,8 +301,8 @@ class GdriveOrganizer < Formula
   end
 
   test do
-    # CLI prints the PEP-440 variant "0.1.0-beta.2" while Homebrew normalizes
-    # version to "0.1.0b2"; assert on the dotted leading segment instead.
+    # CLI prints the PEP-440 variant "0.1.0-beta.3" while Homebrew normalizes
+    # version to "0.1.0b3"; assert on the dotted leading segment instead.
     assert_match(/gdrive-organizer v\d+\.\d+\.\d+/,
       shell_output("#{bin}/gdrive-organizer --version").strip)
     # Subcommand help must render (confirms typer/rich are wired correctly)
