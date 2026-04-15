@@ -300,8 +300,10 @@ class GdriveOrganizer < Formula
   end
 
   test do
-    assert_match "gdrive-organizer v#{version}",
-      shell_output("#{bin}/gdrive-organizer --version").strip
+    # CLI prints the PEP-440 variant "0.1.0-beta.2" while Homebrew normalizes
+    # version to "0.1.0b2"; assert on the dotted leading segment instead.
+    assert_match(/gdrive-organizer v\d+\.\d+\.\d+/,
+      shell_output("#{bin}/gdrive-organizer --version").strip)
     # Subcommand help must render (confirms typer/rich are wired correctly)
     assert_match "Scan Google Drive",
       shell_output("#{bin}/gdrive-organizer scan --help")
