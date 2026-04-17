@@ -3,8 +3,8 @@ class GdriveOrganizer < Formula
 
   desc "AI-powered Google Drive organizer CLI (scan, classify, review, apply, rollback)"
   homepage "https://github.com/papa-channy/google-drive-manager"
-  url "https://files.pythonhosted.org/packages/b3/04/212138421b723c17fd6b3e4a9fc490cd21802a20a8c54e595cf2b0cee464/gdrive_organizer-0.1.0b3.tar.gz"
-  sha256 "7e65ff70d7c8e66110d06a9f19e7ed768660d855a123551c1deacd1a371d7573"
+  url "https://files.pythonhosted.org/packages/83/a5/d614790e881707d4e04021b180fe8e18638376da7f26ed4ed1b573a75599/gdrive_organizer-0.1.0b4.tar.gz"
+  sha256 "339edfb3762e4dc09b8eb7eb78b1984a5b7ab2627249e49a85e5cad11bc7d681"
   license "Apache-2.0"
 
   # cryptography (transitive, via google-auth) builds with maturin, which needs Rust
